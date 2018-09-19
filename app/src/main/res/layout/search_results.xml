@@ -3,10 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/search_content"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/search_results_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/search_hint"/>
+        />
+
+    <!--<TextView-->
+        <!--android:id="@+id/search_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:text="@string/search_hint"/>-->
 
 </android.support.constraint.ConstraintLayout>
