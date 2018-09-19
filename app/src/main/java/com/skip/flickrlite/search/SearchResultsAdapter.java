@@ -36,8 +36,6 @@ class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.Vie
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-//        viewHolder.mTitle.setText(mData.get(i).mUrl);
-//        viewHolder.mTitle.setText("Downloading " + mData.get(i).mTitle); // TODO set progress bar
         new DownloadImageTask(viewHolder).execute(mData.get(i).mUrl);
     }
 
@@ -48,13 +46,11 @@ class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.Vie
 
     class ViewHolder extends RecyclerView.ViewHolder implements DownloadImageTask.OnCompleteCallback {
         private ImageView mContent;
-//        private TextView mTitle;
         private ProgressBar mProgress;
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mContent = itemView.findViewById(R.id.search_result_cell_image_view);
-//            mTitle = itemView.findViewById(R.id.search_result_cell_title_text_view);
             mProgress = itemView.findViewById(R.id.search_result_cell_progress_bar);
         }
 

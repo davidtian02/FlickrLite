@@ -30,9 +30,7 @@ public class SearchImagesTask extends AsyncTask<String, Void, ArrayList<Photo>> 
 
     @Override
     protected ArrayList<Photo> doInBackground(String... queries) {
-
-//        String query = queries[0];
-        String query = "cats";
+        String query = queries[0];
 
         if (!isValidQuery(query)) {
             throw new IllegalArgumentException();

@@ -4,11 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<TextView-->
-        <!--android:id="@+id/search_result_cell_title_text_view"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"/>-->
-
     <ProgressBar
         android:id="@+id/search_result_cell_progress_bar"
         style="?android:attr/progressBarStyleLarge"
@@ -19,8 +14,10 @@
     <ImageView
         android:id="@+id/search_result_cell_image_view"
         android:adjustViewBounds="true"
+        android:layout_margin="@dimen/regular_spacing"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:contentDescription="@string/place_holder_image_view_in_search_result_cell" />
 
 </android.support.constraint.ConstraintLayout>
