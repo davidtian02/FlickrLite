@@ -36,6 +36,7 @@ public class SearchImagesTask extends AsyncTask<String, Void, ArrayList<Photo>> 
             throw new IllegalArgumentException();
         }
 
+        // TODO: pull this out to a Flickr API jar
         String url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=675894853ae8ec6c242fa4c077bcf4a0&text=" + query + "&extras=url_s&format=json&nojsoncallback=1"; // TODO hide these keys!!!!
 
         StringBuilder result = new StringBuilder();

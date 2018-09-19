@@ -45,7 +45,7 @@ public class SearchResultsFragment extends Fragment implements SearchImagesTask.
     // TODO add failed result action, and retry logic
     @Override
     public void onComplete(ArrayList<Photo> photos) {
-        SearchResultsAdapter adapter = new SearchResultsAdapter(getActivity(), photos);
+        SearchResultsAdapter adapter = new SearchResultsAdapter(photos);
         mRecyclerView.setAdapter(adapter);
     }
 }

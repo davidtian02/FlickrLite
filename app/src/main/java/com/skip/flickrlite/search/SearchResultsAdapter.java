@@ -1,7 +1,6 @@
 package com.skip.flickrlite.search;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.skip.flickrlite.R;
 import com.skip.flickrlite.api.Photo;
@@ -21,7 +19,11 @@ class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.Vie
 
     private final ArrayList<Photo> mData;
 
-    SearchResultsAdapter(Context context, ArrayList<Photo> data) {
+    interface OnItemClickCallback {
+        void onItemClick(String url);
+    }
+
+    SearchResultsAdapter(ArrayList<Photo> data) {
         mData = data;
     }
 
@@ -47,11 +49,18 @@ class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.Vie
     class ViewHolder extends RecyclerView.ViewHolder implements DownloadImageTask.OnCompleteCallback {
         private ImageView mContent;
         private ProgressBar mProgress;
-        ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             mContent = itemView.findViewById(R.id.search_result_cell_image_view);
             mProgress = itemView.findViewById(R.id.search_result_cell_progress_bar);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
 
         @Override
