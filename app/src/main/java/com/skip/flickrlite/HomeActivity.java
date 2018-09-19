@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
+
+import com.skip.flickrlite.search.SearchResultsFragment;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -121,10 +124,14 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public void onNewIntent(Intent intent){
         setIntent(intent);
+        // TODO is it just my keyboard? or does it search twice?
         if(Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
 
             Log.d(TAG, "the user searched for " + query);
+
+            SearchResultsFragment searchResultsFragment = (SearchResultsFragment) getSupportFragmentManager().findFragmentById(R.id.search_results_fragment);
+            searchResultsFragment.reloadWithQuery(query);
         }
     }
 }
