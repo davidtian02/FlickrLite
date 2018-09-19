@@ -14,14 +14,13 @@ import com.skip.flickrlite.R;
 import com.skip.flickrlite.api.Photo;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SearchResultsFragment extends Fragment implements SearchImagesTask.OnCompleteListener {
 
     private RecyclerView mRecyclerView;
 
     public SearchResultsFragment() {
-
+        // keep public default constructor
     }
 
     @Nullable
@@ -39,34 +38,6 @@ public class SearchResultsFragment extends Fragment implements SearchImagesTask.
     }
 
     public void reloadWithQuery(String query) {
-//        TextView tv = getActivity().findViewById(R.id.search_content);
-//        tv.setText(query);
-//        String example = "{\n" +
-//                "    \"farm\": 1,\n" +
-//                "    \"height_s\": \"240\",\n" +
-//                "    \"id\": \"33094387050\",\n" +
-//                "    \"isfamily\": 0,\n" +
-//                "    \"isfriend\": 0,\n" +
-//                "    \"ispublic\": 1,\n" +
-//                "    \"owner\": \"29314320@N07\",\n" +
-//                "    \"secret\": \"89019909cc\",\n" +
-//                "    \"server\": \"667\",\n" +
-//                "    \"title\": \"Stanley T. 3-16-2017\",\n" +
-//                "    \"url_s\": \"https://farm1.staticflickr.com/667/33094387050_89019909cc_m.jpg\",\n" +
-//                "    \"width_s\": \"180\"\n" +
-//                "}";
-
-//        Gson gson = new Gson();
-//        Photo searchResultData = gson.fromJson(example, Photo.class);
-//        ArrayList<Photo> data = new ArrayList<>(); // FIXME
-
-//        for (int i=0; i<20; i++) {
-//            data.add(searchResultData);
-//        }
-
-//        SearchResultsAdapter adapter = new SearchResultsAdapter(getActivity(), data);
-//        mRecyclerView.setAdapter(adapter);
-
         new SearchImagesTask(this).execute(query);
     }
 

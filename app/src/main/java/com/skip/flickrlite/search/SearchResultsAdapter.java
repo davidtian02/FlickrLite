@@ -31,9 +31,6 @@ class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.Vie
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-//        viewHolder.title.setText(galleryList.get(i).getImage_title());
-//        viewHolder.img.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//        viewHolder.mContent.setImageResource((galleryList.get(i).getImage_ID()));
         viewHolder.mTitle.setText(mData.get(i).mUrl);
     }
 

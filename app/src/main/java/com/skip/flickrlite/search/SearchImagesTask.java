@@ -69,7 +69,6 @@ public class SearchImagesTask extends AsyncTask<String, Void, ArrayList<Photo>> 
 
     // TODO publish a wait dialog
 
-
     @Override
     protected void onPostExecute(ArrayList<Photo> photos) {
         if (mCallback != null) {

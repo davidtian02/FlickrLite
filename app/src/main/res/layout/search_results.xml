@@ -9,10 +9,4 @@
         android:layout_height="match_parent"
         />
 
-    <!--<TextView-->
-        <!--android:id="@+id/search_content"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:text="@string/search_hint"/>-->
-
 </android.support.constraint.ConstraintLayout>
