@@ -30,14 +30,13 @@ public class SearchImagesTask extends AsyncTask<String, Void, ArrayList<Photo>> 
 
     @Override
     protected ArrayList<Photo> doInBackground(String... queries) {
-        // TODO hide these keys!!!!
         String query = queries[0];
 
         if (!isValidQuery(query)) {
             throw new IllegalArgumentException();
         }
 
-        String url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=675894853ae8ec6c242fa4c077bcf4a0&text=" + query + "&extras=url_s&format=json&nojsoncallback=1";
+        String url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=675894853ae8ec6c242fa4c077bcf4a0&text=" + query + "&extras=url_s&format=json&nojsoncallback=1"; // TODO hide these keys!!!!
 
         StringBuilder result = new StringBuilder();
 

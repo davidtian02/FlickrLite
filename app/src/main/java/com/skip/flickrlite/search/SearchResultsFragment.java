@@ -38,6 +38,7 @@ public class SearchResultsFragment extends Fragment implements SearchImagesTask.
     }
 
     public void reloadWithQuery(String query) {
+        // TODO add ability to view more page than just first page
         new SearchImagesTask(this).execute(query);
     }
 

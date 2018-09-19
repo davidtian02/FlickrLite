@@ -10,6 +10,8 @@ public class Photo {
     int mWidth;
     @SerializedName("url_s")
     public String mUrl;
+    @SerializedName("title")
+    public String mTitle;
     // TODO add other fields
 
     public Photo() {
