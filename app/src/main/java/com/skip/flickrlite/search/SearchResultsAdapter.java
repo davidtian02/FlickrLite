@@ -10,14 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.skip.flickrlite.R;
+import com.skip.flickrlite.api.Photo;
 
 import java.util.ArrayList;
 
 class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.ViewHolder> {
 
-    private final ArrayList<SearchResultData> mData;
+    private final ArrayList<Photo> mData;
 
-    SearchResultsAdapter(Context context, ArrayList<SearchResultData> data) {
+    SearchResultsAdapter(Context context, ArrayList<Photo> data) {
         mData = data;
     }
 
