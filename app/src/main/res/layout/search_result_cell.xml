@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/search_result_cell_title_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <!--<TextView-->
+        <!--android:id="@+id/search_result_cell_title_text_view"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"/>-->
+
+    <ProgressBar
+        android:id="@+id/search_result_cell_progress_bar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/search_result_cell_image_view"
         android:adjustViewBounds="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
 </android.support.constraint.ConstraintLayout>
