@@ -18,6 +18,7 @@ public class SearchImagesTask extends AsyncTask<String, Void, ArrayList<Photo>> 
 
     private static final Gson GSON = new Gson();
     private static final String TAG = "SearchImagesTask";
+    private static final int CONNECTION_TIMEOUT = 5000;;
 
     interface OnCompleteListener {
         void onComplete(ArrayList<Photo> photos);
@@ -41,13 +42,26 @@ public class SearchImagesTask extends AsyncTask<String, Void, ArrayList<Photo>> 
 
         StringBuilder result = new StringBuilder();
 
+        boolean success = runRequest(url, result);
+
+        Log.d(TAG, result.toString());
+
+        if (success) {
+            SearchResponse searchResponse = GSON.fromJson(result.toString(), SearchResponse.class);
+            return searchResponse.mPhotos.mAllPhotosInPage;
+        } else {
+            return null;
+        }
+    }
+
+    private boolean runRequest(String url, StringBuilder result) {
         try {
             URL requestUrl = new URL(url);
             HttpURLConnection connection =(HttpURLConnection) requestUrl.openConnection();
             connection.setRequestMethod("GET");
             connection.setDoOutput(true);
-            connection.setConnectTimeout(10000);
-            connection.setReadTimeout(10000);
+            connection.setConnectTimeout(CONNECTION_TIMEOUT);
+            connection.setReadTimeout(CONNECTION_TIMEOUT);
             connection.connect();
             Scanner scanner = new Scanner(connection.getInputStream());
 
@@ -56,15 +70,14 @@ public class SearchImagesTask extends AsyncTask<String, Void, ArrayList<Photo>> 
             }
         } catch (MalformedURLException e) {
             // TODO show some error or retry here.
-            e.printStackTrace();
+            Log.e(TAG, e);
+            return false;
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, e);
+            return false;
         }
 
-        Log.d(TAG, result.toString());
-
-        SearchResponse searchResponse = GSON.fromJson(result.toString(), SearchResponse.class);
-        return searchResponse.mPhotos.mAllPhotosInPage;
+        return true;
     }
 
     // TODO publish a wait dialog
