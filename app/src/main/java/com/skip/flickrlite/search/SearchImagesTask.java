@@ -68,7 +68,7 @@ public class SearchImagesTask extends AsyncTask<String, Void, ArrayList<Photo>> 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                if (mDb.getDao().responseForKey(mQuery) != null) {
+                if (mDb.getDao().responseForKey(mQuery) == null) {
                     PersistedSearchResult entry = new PersistedSearchResult();
                     entry.searchQuery = mQuery;
                     entry.response = response;
