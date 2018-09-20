@@ -70,10 +70,10 @@ public class SearchImagesTask extends AsyncTask<String, Void, ArrayList<Photo>> 
             }
         } catch (MalformedURLException e) {
             // TODO show some error or retry here.
-            Log.e(TAG, e);
+            Log.e(TAG, e.getMessage());
             return false;
         } catch (IOException e) {
-            Log.e(TAG, e);
+            Log.e(TAG, e.getMessage());
             return false;
         }
 
