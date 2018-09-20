@@ -10,5 +10,5 @@
     <!-- home page -->
     <string name="search">Search</string>
     <string name="search_hint">Search for an image</string>
-    <string name="place_holder_image_view_in_search_result_cell">IMG</string>
+    <string name="image_text_place_holder">IMG</string>
 </resources>
