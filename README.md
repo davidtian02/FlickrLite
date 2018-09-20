@@ -10,6 +10,8 @@ for a demo of what this code does, based on release https://github.com/davidtian
 
 [![Demo App Icon 2](https://img.youtube.com/vi/9oxoGxLwi3s/0.jpg)](https://youtu.be/9oxoGxLwi3s)
 
+[![Demo App Icon 3](https://img.youtube.com/vi/CG02mKI96-8/0.jpg)](https://youtu.be/CG02mKI96-8)
+
 Also adding offline support:
 
-https://user-images.githubusercontent.com/436162/45795726-fdba0680-bc51-11e8-8f84-3e1288e2738f.png
+[![Image](https://user-images.githubusercontent.com/436162/45796151-04497d80-bc54-11e8-863a-cc1720bb2a87.png)
