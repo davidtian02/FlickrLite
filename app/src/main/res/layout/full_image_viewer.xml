@@ -2,13 +2,13 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:background="@color/colorBlack">
 
     <ImageView
-        android:id="@+id/search_result_cell_image_view"
-        android:adjustViewBounds="true"
+        android:id="@+id/full_image_viewer_image_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:contentDescription="@string/image_text_place_holder" />
 
 </android.support.constraint.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.View;
@@ -133,5 +134,17 @@ public class HomeActivity extends AppCompatActivity
             SearchResultsFragment searchResultsFragment = (SearchResultsFragment) getSupportFragmentManager().findFragmentById(R.id.search_results_fragment);
             searchResultsFragment.reloadWithQuery(query);
         }
+    }
+
+    public void goToFullScreenOn(String url) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        ImageViewerFragment fragment = new ImageViewerFragment();
+        Bundle ofJoy = new Bundle();
+        ofJoy.putString(ImageViewerFragment.IMAGE_URL_KEY, url);
+        fragment.setArguments(ofJoy);
+
+        fragmentTransaction.addToBackStack(ImageViewerFragment.TAG);
+        fragmentTransaction.replace(R.id.search_results_fragment, fragment);
+        fragmentTransaction.commit();
     }
 }
