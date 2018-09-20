@@ -41,9 +41,7 @@ class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.Vie
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         RequestOptions options = new RequestOptions();
-        // TODO add drawable placeholder
-//        options.placeholder();
-//        options.error(R.drawable.ic_error);
+        options.placeholder(R.drawable.progress_animation);
 
         String url = mData.get(i).mUrl;
         mGlide.setDefaultRequestOptions(options)
