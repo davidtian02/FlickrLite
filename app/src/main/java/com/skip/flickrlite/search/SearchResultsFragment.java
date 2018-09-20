@@ -1,5 +1,6 @@
 package com.skip.flickrlite.search;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
 import com.skip.flickrlite.R;
 import com.skip.flickrlite.api.Photo;
 
@@ -31,8 +34,18 @@ public class SearchResultsFragment extends Fragment implements SearchImagesTask.
         mRecyclerView = rootView.findViewById(R.id.search_results_recycler_view);
         mRecyclerView.setHasFixedSize(true);
 
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),2); // TODO this is prolly variable based on the images themselves
+
+        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+                int margin = getResources().getDimensionPixelOffset(R.dimen.regular_spacing);
+                outRect.set(margin, margin, margin, margin);
+            }
+        });
+
         mRecyclerView.setLayoutManager(layoutManager);
+
 
         return rootView;
     }
@@ -45,7 +58,7 @@ public class SearchResultsFragment extends Fragment implements SearchImagesTask.
     // TODO add failed result action, and retry logic
     @Override
     public void onComplete(ArrayList<Photo> photos) {
-        SearchResultsAdapter adapter = new SearchResultsAdapter(getActivity(), photos);
+        SearchResultsAdapter adapter = new SearchResultsAdapter(Glide.with(this), photos);
         mRecyclerView.setAdapter(adapter);
     }
 }
