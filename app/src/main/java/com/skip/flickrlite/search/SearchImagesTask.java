@@ -68,10 +68,14 @@ public class SearchImagesTask extends AsyncTask<String, Void, ArrayList<Photo>> 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                PersistedSearchResult entry = new PersistedSearchResult();
-                entry.searchQuery = mQuery;
-                entry.response = response;
-                mDb.getDao().insert(entry);
+                if (mDb.getDao().responseForKey(mQuery) != null) {
+                    PersistedSearchResult entry = new PersistedSearchResult();
+                    entry.searchQuery = mQuery;
+                    entry.response = response;
+                    mDb.getDao().insert(entry);
+                } else {
+                    // TODO update it
+                }
             }
         }).start();
     }
