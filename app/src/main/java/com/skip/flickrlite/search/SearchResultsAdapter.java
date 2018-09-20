@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
@@ -19,11 +18,16 @@ class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.Vie
 
     private final ArrayList<Photo> mData;
     private final RequestManager mGlide;
+    private final OnItemClickCallback mCallback;
 
+    interface OnItemClickCallback {
+        void onItemClick(String url);
+    }
 
-    SearchResultsAdapter(RequestManager glide, ArrayList<Photo> data) {
+    SearchResultsAdapter(RequestManager glide, ArrayList<Photo> data, OnItemClickCallback callback) {
         mData = data;
         mGlide = glide;
+        mCallback = callback;
     }
 
     @NonNull
@@ -41,9 +45,11 @@ class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.Vie
 //        options.placeholder();
 //        options.error(R.drawable.ic_error);
 
+        String url = mData.get(i).mUrl;
         mGlide.setDefaultRequestOptions(options)
-                .load(mData.get(i).mUrl)
+                .load(url)
                 .into(viewHolder.mContent);
+        viewHolder.setTag(url);
     }
 
     @Override
@@ -53,12 +59,24 @@ class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.Vie
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView mContent;
+        private String mTag;
 
-        ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             mContent = itemView.findViewById(R.id.search_result_cell_image_view);
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    if (mCallback != null) {
+                        mCallback.onItemClick(mTag);
+                    }
+                }
+            });
+        }
 
+        void setTag(String tag) {
+            mTag = tag;
         }
 
     }

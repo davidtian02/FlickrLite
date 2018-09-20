@@ -13,14 +13,16 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.RequestManager;
 import com.skip.flickrlite.R;
 import com.skip.flickrlite.api.Photo;
 
 import java.util.ArrayList;
 
-public class SearchResultsFragment extends Fragment implements SearchImagesTask.OnCompleteListener {
+public class SearchResultsFragment extends Fragment implements SearchImagesTask.OnCompleteListener, SearchResultsAdapter.OnItemClickCallback {
 
     private RecyclerView mRecyclerView;
+    private RequestManager mGlide;
 
     public SearchResultsFragment() {
         // keep public default constructor
@@ -30,6 +32,8 @@ public class SearchResultsFragment extends Fragment implements SearchImagesTask.
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.search_results, container, false);
+
+        mGlide = Glide.with(this);
 
         mRecyclerView = rootView.findViewById(R.id.search_results_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -58,7 +62,12 @@ public class SearchResultsFragment extends Fragment implements SearchImagesTask.
     // TODO add failed result action, and retry logic
     @Override
     public void onComplete(ArrayList<Photo> photos) {
-        SearchResultsAdapter adapter = new SearchResultsAdapter(Glide.with(this), photos);
+        SearchResultsAdapter adapter = new SearchResultsAdapter(mGlide, photos, this);
         mRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(String url) {
+        
     }
 }
